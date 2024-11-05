@@ -1,0 +1,25 @@
+{
+  "name": "base-layer",
+  "type": "module",
+  "version": "0.0.1",
+  "main": "./nuxt.config.ts",
+  "scripts": {
+    "dev": "nuxi dev .playground",
+    "dev:prepare": "nuxt prepare .playground",
+    "build": "nuxt build .playground",
+    "generate": "nuxt generate .playground",
+    "preview": "nuxt preview .playground",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^3.8.0",
+    "@nuxt/eslint": "^0.6.1",
+    "@nuxt/ui": "^3.0.0-alpha.7",
+    "@vueuse/core": "^11.2.0",
+    "@vueuse/nuxt": "^11.2.0",
+    "eslint": "^9.13.0",
+    "nuxt": "^3.13.2",
+    "typescript": "^5.6.3",
+    "vue": "latest"
+  }
+}

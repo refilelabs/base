@@ -1,0 +1,73 @@
+<script setup lang="ts">
+const props = withDefaults(defineProps<{
+  modelValue?: File
+  accept?: string
+  icon?: string
+}>(), {
+  icon: 'heroicons:arrow-up-tray-solid',
+})
+
+const data = useVModel(props, 'modelValue')
+
+function setFile(file: File[] | null | FileList) {
+  if (file) {
+    data.value = file[0]
+  }
+}
+
+function onUpdate(e: Event) {
+  const target = e.target as HTMLInputElement
+
+  if (target.files) {
+    setFile(target.files)
+  }
+}
+
+const dropZoneRef = ref<HTMLDivElement>()
+
+const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
+
+const imgSource = computed(() => {
+  if (data.value) {
+    return URL.createObjectURL(data.value)
+  }
+  else {
+    return undefined
+  }
+})
+</script>
+
+<template>
+  <div class="flex items-center justify-center w-full">
+    <label
+      ref="dropZoneRef" for="file-dropzone"
+      class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-[var(--ui-bg-elevated)] hover:bg-[var(--ui-bg-accented)] dark:hover:bg-[var(--ui-bg-accented)] dark:bg-[var(--ui-bg-elevated)]"
+      :class="{
+        'border-[var(--ui-border)] hover:border-[var(--ui-border-accented)]': !isOverDropZone,
+        'border-primary-500 dark:border-primary-500': isOverDropZone,
+      }"
+    >
+      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+        <template v-if="!data">
+          <UIcon :name="icon" class="w-10 h-10 mb-3 text-gray-400" />
+          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
+            <span class="font-semibold">Click to upload</span>
+            or drag and drop
+          </p>
+          <p class="text-xs text-gray-500 dark:text-gray-400">Any image file (i.e. png, jpg, jpeg, gif, webp, svg etc.)</p>
+        </template>
+        <div v-else class="grid place-items-center">
+          <UTooltip :text="data?.name" class="pb-0">
+            <div class="relative group" @click.capture.prevent="data = undefined">
+              <div class="absolute text-white inset-0 hidden group-hover:grid place-items-center backdrop-brightness-50">
+                <span>Remove file</span>
+              </div>
+              <img :src="imgSource || ''" class="object-scale-down max-h-56 max-w-xl min-h-24 min-w-24">
+            </div>
+          </UTooltip>
+        </div>
+      </div>
+      <input id="file-dropzone" type="file" :accept="accept" class="hidden" multiple="false" @change="onUpdate">
+    </label>
+  </div>
+</template>
