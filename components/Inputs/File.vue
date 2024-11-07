@@ -3,6 +3,7 @@ const props = withDefaults(defineProps<{
   modelValue?: File
   accept?: string
   icon?: string
+  hint?: string
 }>(), {
   icon: 'heroicons:arrow-up-tray-solid',
 })
@@ -49,12 +50,12 @@ const imgSource = computed(() => {
     >
       <div class="flex flex-col items-center justify-center pt-5 pb-6">
         <template v-if="!data">
-          <UIcon :name="icon" class="w-10 h-10 mb-3 text-gray-400" />
-          <p class="mb-2 text-sm text-gray-500 dark:text-gray-400">
-            <span class="font-semibold">Click to upload</span>
+          <UIcon :name="icon" class="w-10 h-10 mb-3 text-[var(--ui-text-toned)]" />
+          <p class="mb-2 text-sm text-[var(--ui-text-muted)]">
+            <span class="font-semibold">Click to choose</span>
             or drag and drop
           </p>
-          <p class="text-xs text-gray-500 dark:text-gray-400">Any image file (i.e. png, jpg, jpeg, gif, webp, svg etc.)</p>
+          <p v-if="hint" class="text-xs text-[var(--ui-text-muted)]" v-text="hint" />
         </template>
         <div v-else class="grid place-items-center">
           <UTooltip :text="data?.name" class="pb-0">
