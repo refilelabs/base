@@ -1,12 +1,18 @@
-<script setup lang="ts">
-const props = withDefaults(defineProps<{
+<script lang="ts">
+export interface FileInputProps {
   modelValue?: File
   accept?: string
   icon?: string
   hint?: string
-}>(), {
+}
+
+export const fileInputPropsDefaults = {
   icon: 'heroicons:arrow-up-tray-solid',
-})
+}
+</script>
+
+<script setup lang="ts">
+const props = withDefaults(defineProps<FileInputProps>(), fileInputPropsDefaults)
 
 const data = useVModel(props, 'modelValue')
 
@@ -27,15 +33,6 @@ function onUpdate(e: Event) {
 const dropZoneRef = ref<HTMLDivElement>()
 
 const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
-
-const imgSource = computed(() => {
-  if (data.value) {
-    return URL.createObjectURL(data.value)
-  }
-  else {
-    return undefined
-  }
-})
 </script>
 
 <template>
@@ -63,7 +60,9 @@ const imgSource = computed(() => {
               <div class="absolute text-white inset-0 hidden group-hover:grid place-items-center backdrop-brightness-50">
                 <span>Remove file</span>
               </div>
-              <img :src="imgSource || ''" class="object-scale-down max-h-56 max-w-xl min-h-24 min-w-24">
+              <slot name="file-preview">
+                <div class="square">{{ data.name }}</div>
+              </slot>
             </div>
           </UTooltip>
         </div>
