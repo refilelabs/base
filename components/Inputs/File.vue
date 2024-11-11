@@ -42,10 +42,10 @@ const imgSource = computed(() => {
   <div class="flex items-center justify-center w-full">
     <label
       ref="dropZoneRef" for="file-dropzone"
-      class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-[var(--ui-bg-elevated)] hover:bg-[var(--ui-bg-accented)] dark:hover:bg-[var(--ui-bg-accented)] dark:bg-[var(--ui-bg-elevated)]"
+      class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-[var(--ui-bg-elevated)] hover:bg-[var(--ui-bg-accented)]"
       :class="{
         'border-[var(--ui-border)] hover:border-[var(--ui-border-accented)]': !isOverDropZone,
-        'border-primary-500 dark:border-primary-500': isOverDropZone,
+        'border-[var(--ui-primary)]': isOverDropZone,
       }"
     >
       <div class="flex flex-col items-center justify-center pt-5 pb-6">

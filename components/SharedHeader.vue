@@ -68,7 +68,7 @@ const verticalOptions = computed(() => {
       <nav class="hidden md:flex flex-row gap-x-4">
         <UNavigationMenu orientation="horizontal" :items="items" class="data-[orientation=vertical]:w-48" />
       </nav>
-      <div class="flex flex-row items-center md:ml-6 md:pl-6 md:border-l md:border-zinc-300 md:dark:border-zinc-800 gap-x-2">
+      <div class="flex flex-row items-center md:ml-6 md:pl-6 md:border-l md:border-[var(--ui-border)] gap-x-2">
         <UTooltip text="Toggle color mode">
           <ColorScheme />
         </UTooltip>
