@@ -9,6 +9,3 @@ const file = ref<File | undefined>()
     </UContainer>
   </UApp>
 </template>
-
-<style>
-</style>
