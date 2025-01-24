@@ -1,6 +1,10 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
 
+body {
+    overflow-x: hidden;
+}
+
 .dark {
     --ui-bg: var(--ui-color-neutral-950);
     --ui-bg-elevated: var(--ui-color-neutral-900);
@@ -38,4 +42,6 @@
     --ui-color-secondary-800: var(--color-secondary-800);
     --ui-color-secondary-900: var(--color-secondary-900);
     --ui-color-secondary-950: var(--color-secondary-950);
+
+    --header-height: 73px;
 }
