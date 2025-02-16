@@ -20,7 +20,7 @@ function onUpdate(e: Event) {
   }
 }
 
-const dropZoneRef = ref<HTMLDivElement>()
+const dropZoneRef = useTemplateRef('dropZoneRef')
 
 const { isOverDropZone: isOverDropZoneSource } = useDropZone(dropZoneRef, setFile)
 
