@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { type FileInputProps, fileInputPropsDefaults } from './File.vue'
+import type { FileInputProps } from './File.vue'
+import { fileInputPropsDefaults } from './File.vue'
 
 const props = withDefaults(defineProps<FileInputProps>(), fileInputPropsDefaults)
 

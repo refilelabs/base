@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { FileInputProps } from './File.vue'
 import { twMerge } from 'tailwind-merge'
-import { type FileInputProps, fileInputPropsDefaults } from './File.vue'
+import { fileInputPropsDefaults } from './File.vue'
 
 const props = withDefaults(defineProps<FileInputProps & { class?: string, disableInput?: boolean }>(), { ...fileInputPropsDefaults, class: '', disableInput: false })
 
@@ -35,9 +36,9 @@ const baseClasses = [
   'h-64',
   'border-2',
   'border-dashed',
-  'rounded-lg',
+  'rounded-[calc(var(--ui-radius)*2)]',
   'cursor-pointer',
-  'bg-[var(--ui-bg-elevated)]',
+  'bg-(--ui-bg-elevated)',
 ]
 </script>
 
@@ -46,20 +47,20 @@ const baseClasses = [
     <label
       ref="dropZoneRef" for="file-dropzone"
       :class="{
-        'border-[var(--ui-border)]': !isOverDropZone,
-        'hover:border-[var(--ui-border-accented)]': !props.disableInput,
-        'border-[var(--ui-primary)]': isOverDropZone,
-        'hover:bg-[var(--ui-bg-accented)]': !props.disableInput,
+        'border-(--ui-border)': !isOverDropZone,
+        'hover:border-(--ui-border-accented)': !props.disableInput,
+        'border-(--ui-primary)': isOverDropZone,
+        'hover:bg-(--ui-bg-accented)': !props.disableInput,
         [twMerge(baseClasses, props.class)]: true,
       }"
     >
       <div v-if="!data" class="flex flex-col items-center justify-center pt-5 pb-6">
-        <UIcon :name="icon" class="w-10 h-10 mb-3 text-[var(--ui-text-toned)]" />
-        <p class="mb-2 text-sm text-[var(--ui-text-muted)]">
+        <UIcon :name="icon" class="w-10 h-10 mb-3 text-(--ui-text-toned)" />
+        <p class="mb-2 text-sm text-(--ui-text-muted)">
           <span class="font-semibold">Click to choose</span>
           or drag and drop
         </p>
-        <p v-if="hint" class="text-xs text-[var(--ui-text-muted)]" v-text="hint" />
+        <p v-if="hint" class="text-xs text-(--ui-text-muted)" v-text="hint" />
       </div>
       <slot v-else name="file-preview" />
       <input v-if="!disableInput" id="file-dropzone" type="file" :accept="accept" class="hidden" multiple="false" @change="onUpdate">

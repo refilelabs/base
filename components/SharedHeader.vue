@@ -39,12 +39,12 @@ const verticalOptions = computed(() => {
               icon: 'heroicons:list-bullet',
               to: item.to,
               active: item.active,
-              onSelect: () => verticalMenuOpen.value = false,
+              onSelect: () => { verticalMenuOpen.value = false },
             },
             ...item.children.map((child) => {
               return {
                 ...child,
-                onSelect: () => verticalMenuOpen.value = false,
+                onSelect: () => { verticalMenuOpen.value = false },
               }
             }),
           ],
@@ -57,7 +57,7 @@ const verticalOptions = computed(() => {
 </script>
 
 <template>
-  <header class="w-full p-3 flex flex-row justify-between items-center sticky top-0 z-999 border-b border-[var(--ui-border)] backdrop-blur-xl">
+  <header class="w-full p-3 flex flex-row justify-between items-center sticky top-0 z-999 border-b border-(--ui-border) backdrop-blur-xl">
     <UTooltip text="Go to home">
       <ULink to="https://refilelabs.com" class="text-2xl font-bold" variant="link">
         <Logo />
@@ -68,7 +68,7 @@ const verticalOptions = computed(() => {
       <nav class="hidden md:flex flex-row gap-x-4">
         <UNavigationMenu orientation="horizontal" :items="items" class="data-[orientation=vertical]:w-48" />
       </nav>
-      <div class="flex flex-row items-center md:ml-6 md:pl-6 md:border-l md:border-[var(--ui-border)] gap-x-2">
+      <div class="flex flex-row items-center md:ml-6 md:pl-6 md:border-l md:border-(--ui-border) gap-x-2">
         <UTooltip text="Toggle color mode">
           <ColorScheme />
         </UTooltip>

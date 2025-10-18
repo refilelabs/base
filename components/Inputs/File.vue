@@ -39,20 +39,20 @@ const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
   <div class="flex items-center justify-center w-full">
     <label
       ref="dropZoneRef" for="file-dropzone"
-      class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-lg cursor-pointer bg-[var(--ui-bg-elevated)] hover:bg-[var(--ui-bg-accented)]"
+      class="flex flex-col items-center justify-center w-full h-64 border-2 border-dashed rounded-[calc(var(--ui-radius)*2)] cursor-pointer bg-(--ui-bg-elevated) hover:bg-(--ui-bg-accented)"
       :class="{
-        'border-[var(--ui-border)] hover:border-[var(--ui-border-accented)]': !isOverDropZone,
-        'border-[var(--ui-primary)]': isOverDropZone,
+        'border-(--ui-border) hover:border-(--ui-border-accented)': !isOverDropZone,
+        'border-(--ui-primary)': isOverDropZone,
       }"
     >
       <div class="flex flex-col items-center justify-center pt-5 pb-6">
         <template v-if="!data">
-          <UIcon :name="icon" class="w-10 h-10 mb-3 text-[var(--ui-text-toned)]" />
-          <p class="mb-2 text-sm text-[var(--ui-text-muted)]">
+          <UIcon :name="icon" class="w-10 h-10 mb-3 text-(--ui-text-toned)" />
+          <p class="mb-2 text-sm text-(--ui-text-muted)">
             <span class="font-semibold">Click to choose</span>
             or drag and drop
           </p>
-          <p v-if="hint" class="text-xs text-[var(--ui-text-muted)]" v-text="hint" />
+          <p v-if="hint" class="text-xs text-(--ui-text-muted)" v-text="hint" />
         </template>
         <div v-else class="grid place-items-center">
           <UTooltip :text="data?.name" class="pb-0">

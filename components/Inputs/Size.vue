@@ -38,7 +38,7 @@ watchEffect(() => {
     <UFormField label="Width">
       <UInput v-model.number="width" type="number" />
     </UFormField>
-    <UIcon name="heroicons:x-mark-20-solid" class="text-[var(--ui-text-muted)] mt-7" />
+    <UIcon name="heroicons:x-mark-20-solid" class="text-(--ui-text-muted) mt-7" />
     <UFormField label="Height">
       <UInput v-model.number="height" type="number" />
     </UFormField>
