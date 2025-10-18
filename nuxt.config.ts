@@ -13,4 +13,12 @@ export default defineNuxtConfig({
       standalone: false,
     },
   },
+  // Hotfix until Nuxt 3.17 is released
+  vite: {
+    server: {
+      fs: {
+        strict: false,
+      },
+    },
+  },
 })
