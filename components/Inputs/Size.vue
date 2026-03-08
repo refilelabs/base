@@ -9,11 +9,21 @@ const sizeModel = useVModel(props, 'size')
 
 const width = ref(props.size[0])
 const height = ref(props.size[1])
+const aspectLocked = ref(true)
 
 let updating = false
 
+watch(() => props.size, ([w, h]) => {
+  if (w !== width.value || h !== height.value) {
+    updating = true
+    width.value = w
+    height.value = h
+    updating = false
+  }
+})
+
 watchEffect(() => {
-  if (!updating) {
+  if (!updating && aspectLocked.value) {
     updating = true
     height.value = Math.round(width.value / props.aspectRatio)
     updating = false
@@ -21,7 +31,7 @@ watchEffect(() => {
 })
 
 watchEffect(() => {
-  if (!updating) {
+  if (!updating && aspectLocked.value) {
     updating = true
     width.value = Math.round(height.value * props.aspectRatio)
     updating = false
@@ -38,7 +48,14 @@ watchEffect(() => {
     <UFormField label="Width">
       <UInput v-model.number="width" type="number" />
     </UFormField>
-    <UIcon name="heroicons:x-mark-20-solid" class="text-(--ui-text-muted) mt-7" />
+    <UButton
+      :icon="aspectLocked ? 'heroicons:link' : 'heroicons:link-slash'"
+      color="neutral"
+      variant="subtle"
+      class="mt-5 cursor-pointer"
+      :title="aspectLocked ? 'Unlock aspect ratio' : 'Lock aspect ratio'"
+      @click="aspectLocked = !aspectLocked"
+    />
     <UFormField label="Height">
       <UInput v-model.number="height" type="number" />
     </UFormField>
