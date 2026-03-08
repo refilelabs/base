@@ -11,6 +11,9 @@
     "preview": "nuxt preview .playground",
     "lint": "eslint ."
   },
+  "dependencies": {
+    "tailwindcss": "4.1.17"
+  },
   "devDependencies": {
     "@antfu/eslint-config": "4.12.0",
     "@nuxt/eslint": "1.3.0",
@@ -22,8 +25,5 @@
     "tailwind-merge": "3.2.0",
     "typescript": "^5.6.3",
     "vue": "latest"
-  },
-  "dependencies": {
-    "tailwindcss": "4.1.17"
   }
 }

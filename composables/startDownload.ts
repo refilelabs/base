@@ -1,4 +1,4 @@
-export function startDownload(file: Uint8Array, filename: string) {
+export function startDownload(file: Uint8Array<ArrayBuffer>, filename: string) {
   const blob = new Blob([file], { type: 'application/octet-stream' })
 
   const url = URL.createObjectURL(blob)

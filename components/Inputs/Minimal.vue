@@ -47,20 +47,20 @@ const baseClasses = [
     <label
       ref="dropZoneRef" for="file-dropzone"
       :class="{
-        'border-(--ui-border)': !isOverDropZone,
-        'hover:border-(--ui-border-accented)': !props.disableInput,
-        'border-(--ui-primary)': isOverDropZone,
-        'hover:bg-(--ui-bg-accented)': !props.disableInput,
+        'border-default': !isOverDropZone,
+        'hover:border-accented': !props.disableInput,
+        'border-primary': isOverDropZone,
+        'hover:bg-accented': !props.disableInput,
         [twMerge(baseClasses, props.class)]: true,
       }"
     >
       <div v-if="!data" class="flex flex-col items-center justify-center pt-5 pb-6">
-        <UIcon :name="icon" class="w-10 h-10 mb-3 text-(--ui-text-toned)" />
-        <p class="mb-2 text-sm text-(--ui-text-muted)">
+        <UIcon :name="icon" class="w-10 h-10 mb-3 text-toned" />
+        <p class="mb-2 text-sm text-muted">
           <span class="font-semibold">Click to choose</span>
           or drag and drop
         </p>
-        <p v-if="hint" class="text-xs text-(--ui-text-muted)" v-text="hint" />
+        <p v-if="hint" class="text-xs text-muted" v-text="hint" />
       </div>
       <slot v-else name="file-preview" />
       <input v-if="!disableInput" id="file-dropzone" type="file" :accept="accept" class="hidden" multiple="false" @change="onUpdate">
