@@ -15,10 +15,6 @@ const items = computed(() => [
     {
       label: 'GitHub',
       icon: 'simple-icons:github',
-      badge: {
-        color: 'secondary',
-        label: 'New',
-      },
       to: 'https://github.com/refilelabs',
       target: '_blank',
     },
