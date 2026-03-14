@@ -33,7 +33,9 @@ const baseClasses = [
   'items-center',
   'justify-center',
   'w-full',
-  'h-64',
+  'h-screen',
+  'min-h-[30vh]',
+  'max-h-[65vh]',
   'border-2',
   'border-dashed',
   'rounded-[calc(var(--ui-radius)*2)]',
@@ -55,9 +57,9 @@ const baseClasses = [
       }"
     >
       <div v-if="!data" class="flex flex-col items-center justify-center pt-5 pb-6">
-        <UIcon :name="icon" class="w-10 h-10 mb-3 text-toned" />
+        <UIcon :name="icon" class="w-12 h-12 mb-4 text-primary opacity-70" />
         <p class="mb-2 text-sm text-muted">
-          <span class="font-semibold">Click to choose</span>
+          <span class="font-semibold text-highlighted">Click to upload</span>
           or drag and drop
         </p>
         <p v-if="hint" class="text-xs text-muted" v-text="hint" />
