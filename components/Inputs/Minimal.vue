@@ -38,9 +38,10 @@ const baseClasses = [
   'max-h-[65vh]',
   'border-2',
   'border-dashed',
-  'rounded-[calc(var(--ui-radius)*2)]',
+  'rounded-xl',
   'cursor-pointer',
   'bg-(--ui-bg-elevated)',
+  'transition-colors',
 ]
 </script>
 

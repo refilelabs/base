@@ -39,7 +39,7 @@ const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
   <div class="flex items-center justify-center w-full">
     <label
       ref="dropZoneRef" for="file-dropzone"
-      class="flex flex-col items-center justify-center w-full h-screen min-h-[30vh] max-h-[65vh] border-2 border-dashed rounded-[calc(var(--ui-radius)*2)] cursor-pointer bg-elevated hover:bg-accented"
+      class="flex flex-col items-center justify-center w-full h-screen min-h-[30vh] max-h-[65vh] border-2 border-dashed rounded-xl cursor-pointer bg-elevated hover:bg-accented transition-colors"
       :class="{
         'border-default hover:border-accented': !isOverDropZone,
         'border-primary': isOverDropZone,
