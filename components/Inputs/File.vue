@@ -54,17 +54,20 @@ const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
           </p>
           <p v-if="hint" class="text-xs text-muted" v-text="hint" />
         </template>
-        <div v-else class="h-full grid place-items-center overflow-hidden">
-          <UTooltip :text="data?.name" class="pb-0 block h-full overflow-hidden">
-            <div class="relative group h-full overflow-hidden" @click.capture.prevent="data = undefined">
-              <div class="absolute text-white inset-0 hidden group-hover:grid place-items-center backdrop-brightness-50">
-                <span>Remove file</span>
-              </div>
+        <div v-else class="group h-full w-full relative grid place-items-center overflow-hidden" @click.capture.prevent="data = undefined">
+          <UTooltip :text="data?.name" class="pb-0 h-full w-full flex items-center justify-center overflow-hidden">
+            <div class="h-full w-full flex items-center justify-center overflow-hidden transition-all duration-200 group-hover:brightness-50 group-hover:blur-sm">
               <slot name="file-preview">
                 <div class="square">{{ data.name }}</div>
               </slot>
             </div>
           </UTooltip>
+          <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            <div class="flex flex-col items-center gap-2 text-white">
+              <UIcon name="heroicons:trash-solid" class="w-7 h-7 drop-shadow" />
+              <span class="text-sm font-medium drop-shadow">Remove file</span>
+            </div>
+          </div>
         </div>
       </div>
       <input id="file-dropzone" type="file" :accept="accept" class="hidden" multiple="false" @change="onUpdate">
