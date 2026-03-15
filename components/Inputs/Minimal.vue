@@ -40,7 +40,7 @@ const baseClasses = [
   'border-dashed',
   'rounded-xl',
   'cursor-pointer',
-  'bg-(--ui-bg-elevated)',
+  'bg-elevated',
   'transition-colors',
 ]
 </script>
