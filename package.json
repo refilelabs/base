@@ -12,6 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "fflate": "^0.8.2",
     "tailwindcss": "4.1.17"
   },
   "devDependencies": {
