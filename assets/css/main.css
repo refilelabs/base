@@ -18,6 +18,9 @@ body {
 }
 
 @theme {
+    --font-sans: "Geist", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+
     --color-secondary-50: #faffe5;
     --color-secondary-100: #f1ffc8;
     --color-secondary-200: #ddff84;

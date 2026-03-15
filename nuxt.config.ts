@@ -11,11 +11,17 @@ export default defineNuxtConfig({
   vite: {
     plugins: [wasm()],
   },
-  modules: ['@vueuse/nuxt', '@nuxt/ui', '@nuxt/eslint'],
+  modules: ['@vueuse/nuxt', '@nuxt/ui', '@nuxt/eslint', '@nuxt/fonts'],
   css: [`${currentDir}/assets/css/main.css`],
   eslint: {
     config: {
       standalone: false,
     },
+  },
+  fonts: {
+    families: [
+      { name: 'Geist', provider: 'google' },
+      { name: 'Geist Mono', provider: 'google' },
+    ],
   },
 })

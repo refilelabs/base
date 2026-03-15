@@ -12,6 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
     "fflate": "^0.8.2",
     "tailwindcss": "4.1.17"
   },
