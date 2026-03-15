@@ -45,7 +45,7 @@ const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
         'border-primary': isOverDropZone,
       }"
     >
-      <div class="flex flex-col items-center justify-center pt-5 pb-6">
+      <div class="flex flex-col items-center justify-center pt-5 pb-6 h-full max-w-full overflow-hidden">
         <template v-if="!data">
           <UIcon :name="icon" class="w-12 h-12 mb-4 text-primary opacity-70" />
           <p class="mb-2 text-sm text-muted">
@@ -54,9 +54,9 @@ const { isOverDropZone } = useDropZone(dropZoneRef, setFile)
           </p>
           <p v-if="hint" class="text-xs text-muted" v-text="hint" />
         </template>
-        <div v-else class="grid place-items-center">
-          <UTooltip :text="data?.name" class="pb-0">
-            <div class="relative group" @click.capture.prevent="data = undefined">
+        <div v-else class="h-full grid place-items-center overflow-hidden">
+          <UTooltip :text="data?.name" class="pb-0 block h-full overflow-hidden">
+            <div class="relative group h-full overflow-hidden" @click.capture.prevent="data = undefined">
               <div class="absolute text-white inset-0 hidden group-hover:grid place-items-center backdrop-brightness-50">
                 <span>Remove file</span>
               </div>
